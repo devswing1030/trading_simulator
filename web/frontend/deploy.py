@@ -31,6 +31,9 @@ def move_react_build():
     if not os.path.exists(DJANGO_TEMPLATES_PATH):
         os.makedirs(DJANGO_TEMPLATES_PATH)
 
+    # Remove existing files in Django's static directory
+    shutil.rmtree(DJANGO_STATIC_PATH)
+
     # Move build folder content into Django's static directory
     shutil.copytree(os.path.join(build_dir, 'static'), DJANGO_STATIC_PATH, dirs_exist_ok=True)
 

@@ -34,7 +34,7 @@ const StockScreen= () => {
     return () => clearInterval(intervalId);
   }, []); // Empty dependency array means this effect runs only once when the component mounts
 
-  if (loading) return <div>Loading...</div>;
+  //if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
