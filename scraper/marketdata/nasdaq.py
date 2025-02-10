@@ -12,10 +12,14 @@ from marketdata.snapshot import Snapshot
 
 
 class Nasdaq:
-    def __init__(self):
+    def __init__(self, high_performance=True):
         self.download_dir = '/tmp/scraper/nasdaq'
         os.makedirs(self.download_dir, exist_ok=True)
         self.watchlist = {}
+        self.high_performance = high_performance
+        self.driver = None
+        if not self.high_performance:
+            self.driver = self.create_driver()
 
     def create_driver(self, headless=True):
         # Create a temporary directory for the user data
@@ -55,13 +59,36 @@ class Nasdaq:
         driver = webdriver.Chrome(service=service, options=options)
         return driver
 
+    def get_driver(self, symbol):
+        if self.high_performance:
+            if symbol not in self.watchlist:
+                self.watchlist[symbol] = {"driver": self.create_driver(), "is_ok": False}
+            return self.watchlist[symbol]['driver']
+        else:
+            return self.driver
+
+    def is_symbol_loaded(self, symbol):
+        if self.high_performance:
+            if symbol not in self.watchlist:
+                return False
+            return self.watchlist[symbol]['is_ok']
+        else:
+            return False
+
+    def set_symbol_loaded(self, symbol):
+        if not self.high_performance:
+            return
+        self.watchlist[symbol]['is_ok'] = True
+
+    def set_symbol_unloaded(self, symbol):
+        if not self.high_performance:
+            return
+        self.watchlist[symbol]['is_ok'] = False
+
     def get_one_symbol(self, symbol):
         try:
-            if symbol not in self.watchlist:
-                self.watchlist[symbol] = {"driver": self.create_driver(), "is_ok": False }
-
-            driver = self.watchlist[symbol]['driver']
-            if not self.watchlist[symbol]['is_ok']:
+            driver = self.get_driver(symbol)
+            if not self.is_symbol_loaded(symbol):
                 while True:
                     try:
                         driver.get(f'https://www.nasdaq.com/market-activity/stocks/{symbol}')
@@ -101,12 +128,12 @@ class Nasdaq:
                 element = shadow_root.find_element(By.CLASS_NAME, 'header-info-volume-info')
                 snapshot.volume = element.text
 
-            self.watchlist[symbol]['is_ok'] = True
+            self.set_symbol_loaded(symbol)
 
             return snapshot
         except Exception as e:
             print("Get symbol failed: ", symbol, e)
-            self.watchlist[symbol]['is_ok'] = False
+            self.set_symbol_unloaded(symbol)
             time.sleep(10)
             return None
 

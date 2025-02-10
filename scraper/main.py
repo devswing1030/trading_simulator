@@ -8,7 +8,7 @@ from marketdata.snapshot import Snapshot
 
 
 def get_nasdaq_topN(topN, db_file):
-    nasdaq = Nasdaq()
+    nasdaq = Nasdaq(False)
     symbol_list = nasdaq.get_symbol_list()
 
     # get top 10 last sale symbols

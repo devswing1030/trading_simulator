@@ -4,7 +4,7 @@ import subprocess
 
 # Define paths
 REACT_APP_PATH = "."  # Change this to your React project path
-DJANGO_APP_PATH = "../django_demo"  # Change this to your Django project path
+DJANGO_APP_PATH = "../backend"  # Change this to your Django project path
 DJANGO_STATIC_PATH = os.path.join(DJANGO_APP_PATH, 'nasdaq/static/nasdaq')  # Assuming 'myapp' is your Django app
 DJANGO_TEMPLATES_PATH = os.path.join(DJANGO_APP_PATH, 'nasdaq/templates/nasdaq')  # Assuming 'myapp' is your Django app
 
@@ -76,7 +76,7 @@ def collect_static():
 # Main function to automate the process
 def automate_react_django_integration():
     try:
-        build_react_app()
+        #build_react_app()
         move_react_build()
         update_index_html()
         #collect_static()

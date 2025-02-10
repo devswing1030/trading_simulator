@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="2046fac5-eb5c-4930-8bbb-bfdc641bd8c3" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketdata/nasdaq.py" beforeDir="false" afterPath="$PROJECT_DIR$/marketdata/nasdaq.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketdata/snapshot.py" beforeDir="false" afterPath="$PROJECT_DIR$/marketdata/snapshot.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../web/backend/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../web/backend/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/backend/django_demo/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/../web/backend/django_demo/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../web/frontend/deploy.py" beforeDir="false" afterPath="$PROJECT_DIR$/../web/frontend/deploy.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +74,7 @@
       <workItem from="1738916122469" duration="7554000" />
       <workItem from="1738937341920" duration="5406000" />
       <workItem from="1739012506041" duration="7575000" />
-      <workItem from="1739103482756" duration="8648000" />
+      <workItem from="1739103482756" duration="10394000" />
     </task>
     <servers />
   </component>
@@ -104,6 +104,6 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/scraper$main.coverage" NAME="main Coverage Results" MODIFIED="1739167029338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/scraper$main.coverage" NAME="main Coverage Results" MODIFIED="1739167158166" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

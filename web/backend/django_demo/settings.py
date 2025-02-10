@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-7nu67e73uf*zk9x$6n)ocm&n1zx7gm88f8y!ih(b!^_w2an2h2
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -120,7 +120,6 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / "nasdaq/static/build",  # Path to the React build folder
 ]
 
 # Default primary key field type
