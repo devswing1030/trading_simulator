@@ -21,13 +21,12 @@ class Nasdaq:
         # Create a temporary directory for the user data
         user_data_dir = tempfile.mkdtemp()
 
-        service = Service('/opt/homebrew/bin/chromedriver')  # 替换为你的chromedriver路径
+        service = Service('/usr/local/bin/chromedriver')  # 替换为你的chromedriver路径
         options = webdriver.ChromeOptions()
         options.page_load_strategy = 'eager'  # 设置为 eager 让页面尽快加载
         # Some websites might detect headless browsers and block access. Try setting a custom user-agent to mimic a real browser
         custom_user_agent = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36"
         options.add_argument(f'user-agent={custom_user_agent}')
-        """
         options.add_argument('--disable-infobars')  # 禁用 Chrome 信息栏
         options.add_argument('--disable-extensions')  # 禁用扩展
         options.add_argument('--disable-translate')  # 禁用自动翻译
@@ -40,8 +39,6 @@ class Nasdaq:
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
         options.add_argument("--start-maximized")
-        options.add_argument("--headless")
-        """
         if headless:
             options.add_argument("--headless=new")
 
