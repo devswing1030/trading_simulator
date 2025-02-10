@@ -114,12 +114,20 @@ class Nasdaq:
                 os.remove(os.path.join(self.download_dir, file))
 
         driver = self.create_driver()
-        wait = WebDriverWait(driver, 30)  # 设置最大等待时间为 10 秒
-        driver.get("https://www.nasdaq.com/market-activity/stocks/screener")
+        wait = WebDriverWait(driver, 5)  # 设置最大等待时间为 10 秒
+        while True:
+            try:
+                driver.get("https://www.nasdaq.com/market-activity/stocks/screener")
 
-        element = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "jupiter22-c-table__download-csv")))
-        element.click()
-        print('Downloading csv file')
+                with open('nasdaq_screener.html', 'w') as f:
+                    f.write(driver.page_source)
+
+                element = wait.until(EC.visibility_of_element_located((By.CLASS_NAME, "jupiter22-c-table__download-csv")))
+                element.click()
+                print('Downloading csv file')
+                break
+            except Exception as e:
+                print("Open screener page failed: ", e)
 
         symbol_list_file = None
         while True:
