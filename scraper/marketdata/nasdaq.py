@@ -123,7 +123,7 @@ class Nasdaq:
                 snapshot.bid_qty = lines[2]
                 element = shadow_root.find_element(By.CLASS_NAME, 'header-info-ask-info')
                 lines = element.text.split(' ')
-                snapshot.ask = lines[0]
+                snapshot.ask_px = lines[0]
                 snapshot.ask_qty = lines[2]
                 element = shadow_root.find_element(By.CLASS_NAME, 'header-info-volume-info')
                 snapshot.volume = element.text

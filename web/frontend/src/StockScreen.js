@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './StockScreen.css';
 
 const StockScreen= () => {
   const [data, setData] = useState([]);
@@ -8,6 +9,7 @@ const StockScreen= () => {
   // Fetch data from the backend API
   const fetchData = async () => {
     setLoading(true);
+    setError(null)
     try {
       const response = await fetch('/nasdaq/topn'); // Replace with your API endpoint
       if (!response.ok) {
@@ -35,7 +37,7 @@ const StockScreen= () => {
   }, []); // Empty dependency array means this effect runs only once when the component mounts
 
   //if (loading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error}</div>;
+  //if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
@@ -49,7 +51,7 @@ const StockScreen= () => {
             <th>Bid</th>
             <th>Ask</th>
             <th>Volume</th>
-            <th>ClosePx</th>
+            <th>PrevClosePx</th>
             <th>Market</th>
             <th>Timestamp</th>
           </tr>
@@ -58,7 +60,7 @@ const StockScreen= () => {
           {data.map((post) => (
             <tr key={post.symbol}>
               <td>{post.symbol}</td>
-              <td>{post.name}</td>
+              <td><a href={`https://www.nasdaq.com/market-activity/stocks/${post.symbol}`}>{post.name}</a></td>
               <td>{post.last_px}</td>
               <td>{post.bid_px=='' ? '' : post.bid_px + ' X ' + post.bid_qty}</td>
               <td>{post.ask_px=='' ? '' : post.ask_px + ' X ' + post.ask_qty}</td>
