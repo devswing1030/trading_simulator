@@ -6,6 +6,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.chrome.service import Service
+import tempfile
 
 from marketdata.snapshot import Snapshot
 
@@ -17,6 +18,9 @@ class Nasdaq:
         self.watchlist = {}
 
     def create_driver(self, headless=True):
+        # Create a temporary directory for the user data
+        user_data_dir = tempfile.mkdtemp()
+
         service = Service('/opt/homebrew/bin/chromedriver')  # 替换为你的chromedriver路径
         options = webdriver.ChromeOptions()
         options.page_load_strategy = 'eager'  # 设置为 eager 让页面尽快加载
@@ -40,6 +44,8 @@ class Nasdaq:
         """
         if headless:
             options.add_argument("--headless=new")
+
+        options.add_argument(f"--user-data-dir={user_data_dir}")  # Set unique user data directory
 
         # Set Chrome preferences for download behavior
         prefs = {
