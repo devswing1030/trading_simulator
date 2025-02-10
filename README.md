@@ -33,9 +33,6 @@ skills:
 
 ## match engine (under development, the code is in my another github repository named [continuous_auction_demo](https://github.com/devswing1030/continuos_auction_demo))
 
-
-https://github.com/devswing1030/continuos_auction_demo
-
 * match the order with price priority and time priority.
 * feed the order status back to the web server.
 * feed the market data back to the web server.
